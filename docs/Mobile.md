@@ -14,8 +14,9 @@ The mean URL Https://gymvue.net
             }
 
 >   - Response
+
       - Success Return 200
-           * If Mobile is Verify before
+          * If Mobile is Verify before
                     {
                       'userId': int,
                       'token': string,
@@ -58,6 +59,7 @@ The mean URL Https://gymvue.net
             }
 
 >   - Response
+
       - Success Return 200
                     {
                       'status': int,
@@ -82,6 +84,7 @@ The mean URL Https://gymvue.net
             }
 
 >   - Response
+
       - Success Return 200
                     {
                       'status': int,
@@ -113,6 +116,7 @@ The mean URL Https://gymvue.net
             }
 
 >   - Response
+
       - Success Return 200
                     {
                       'status': int,
@@ -137,6 +141,7 @@ The mean URL Https://gymvue.net
             }
 
 >   - Response
+
       - Success Return 200
                     {
                       'status': int,
@@ -162,6 +167,7 @@ The mean URL Https://gymvue.net
             }
 
 >   - Response
+
       - Success Return 200
                     {
                       'status': int,
@@ -195,6 +201,7 @@ The mean URL Https://gymvue.net
             }
 
 >   - Response
+
       - Success Return 200
                     {
                       'status': int,
