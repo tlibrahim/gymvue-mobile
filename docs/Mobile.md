@@ -188,7 +188,7 @@ The mean URL Https://gymvue.net
                   'message': string
                 }  
 
-6- Home API 
+7- Home API 
 
 >   - Request
     - Request type -> POST
@@ -235,4 +235,354 @@ The mean URL Https://gymvue.net
               {
                   'status': int,
                   'message': string
-                }                                                                              
+                }         
+
+8- Pay For Session API 
+
+>   - Request
+    - Request type -> POST
+
+    - Parameter 
+            {
+            'userId': int,
+            'gymId': int,
+            'sessionId': int,
+            'amount': double,
+            'token': string
+            }
+
+>   - Response
+
+      - Success Return 200
+                    {
+                      'status': int
+                    }
+      
+      - Error Return 
+              {
+                  'status': int,
+                  'message': string
+                }    
+
+9- Calendar API 
+
+>   - Request
+    - Request type -> GET
+
+    - Parameter 
+            {
+            'userId': int,
+            'gymId': int,
+            'token': string
+            }
+
+>   - Response
+
+      - Success Return 200
+                    {
+                      'status': int,
+                      'sessions': object[
+                                      {
+                                      'sessionId':int,
+                                      'session_type':int,
+                                      'session_title': string,
+                                      'description': text,
+                                      'IsPaid': boolean,
+                                      'date': date,
+                                      'time': string,
+                                      'image': string,
+                                      'intro': text,
+                                      'trainer_name': string
+                                      },
+                                    ]            
+                    }
+      
+      - Error Return 
+              {
+                  'status': int,
+                  'message': string
+                }         
+
+10- Training Sessions API 
+
+>   - Request
+    - Request type -> GET
+
+    - Parameter 
+            {
+            'userId': int,
+            'gymId': int,
+            'token': string,
+            'date' : date,
+            'training_type': int( 1: Class Session, 2: Personal Session )
+            'falter':
+              [
+                {
+                  'filterId': int,
+                  'active': boolean
+                }
+              ]
+            }
+
+>   - Response
+
+      - Success Return 200
+                    {
+                      'status': int,
+                      'training_type':int,
+                      'upcoming': object[
+                                      {
+                                        'sessionId':int,
+                                        'session_title': string,
+                                        'session_type':int,
+                                        'date': date,
+                                        'time': string,
+                                        'image': string,
+                                        'intro': text,
+                                        'trainer_name': string,
+                                        'descriptioan': text
+                                      },
+                                    ]           
+                    }
+      
+      - Error Return 
+              {
+                  'status': int,
+                  'message': string
+                }         
+
+11- Session Booking API 
+
+>   - Request
+    - Request type -> POST
+
+    - Parameter 
+            {
+            'userId': int,
+            'gymId': int,
+            'sessionId': int,
+            'amount': double,
+            'token': string
+            }
+
+>   - Response
+
+      - Success Return 200
+                    {
+                      'status': int
+                    }
+      
+      - Error Return 
+              {
+                  'status': int,
+                  'message': string
+                }    
+
+12- Profile API 
+
+>   - Request
+    - Request type -> GET
+
+    - Parameter 
+            {
+            'userId': int,
+            'token': string
+            }
+
+>   - Response
+
+      - Success Return 200
+                    {
+                      'name': string,
+                      'image': string,
+                      'mobile': string,
+                      'address1': string,
+                      'address2': string,
+                      'city': string,
+                      'postCode': string,
+                      'gyms_list': object[
+                                    {
+                                    'gymId':int,
+                                    'gym_name': string,
+                                    'gym_image':string,
+                                    'last_seen': DateTime,
+                                    'selected': boolean
+                                    }
+                                  ],
+                      'status': int            
+                      }
+
+      - Error Return 
+              {
+                  'status': int,
+                  'message': string
+                }
+
+13- Edit Profile API 
+
+>   - Request
+    - Request type -> PUT
+
+    - Parameter 
+            {
+            'userId': int,
+            'name': string,
+            'image': file,
+            'mobile': string,
+            'address1': string,
+            'address2': string,
+            'city': string,
+            'postCode': string,            
+            'token': string
+            }
+
+>   - Response
+
+      - Success Return 200
+                    {
+                      'status': int            
+                    }
+
+      - Error Return 
+              {
+                  'status': int,
+                  'message': string
+                }
+
+14- Payment API 
+
+>   - Request
+    - Request type -> GET
+
+    - Parameter 
+            {
+            'userId': int,
+            'token': string
+            }
+
+>   - Response
+
+      - Success Return 200
+                    {
+                      'status': int,
+                      'payment_methods': object[
+                                        {
+                                          'id':int,
+                                          'name': string,
+                                          'icon': string
+                                        },
+                                      ]        
+                      'user_payment_methods': object[
+                                        {
+                                          'id':int,
+                                          'card_name':string,
+                                          'card_number': string,
+                                          'expiry_month': string,
+                                          'expiry_year': string,
+                                          'cvv-cvc': int,
+                                          'isDefault': boolean,
+                                          'icon': string
+                                        },
+                                      ]            
+                    }
+      
+      - Error Return 
+              {
+                  'status': int,
+                  'message': string
+                }         
+
+15- Add Payment Method API 
+
+>   - Request
+    - Request type -> POST
+
+    - Parameter 
+            {
+              'userId': int,
+              'method_type': int,
+              'card_name':string,
+              'card_number': string,
+              'expiry_month': string,
+              'expiry_year': string,
+              'cvv-cvc': int,
+              'isDefault': boolean,
+              'token': string
+            }
+
+>   - Response
+
+      - Success Return 200
+                    {
+                      'status': int,
+                      'payment_methods': object[
+                                        {
+                                          'id':int,
+                                          'name': string,
+                                          'icon': string
+                                        },
+                                      ]        
+                      'user_payment_methods': object[
+                                        {
+                                          'id':int,
+                                          'card_name':string,
+                                          'card_number': string,
+                                          'expiry_month': string,
+                                          'expiry_year': string,
+                                          'cvv-cvc': int,
+                                          'isDefault': boolean,
+                                          'icon': string
+                                        },
+                                      ]            
+                    }
+      
+      - Error Return 
+              {
+                  'status': int,
+                  'message': string
+                }                  
+
+16- Edit Payment Method API 
+
+>   - Request
+    - Request type -> PUT
+
+    - Parameter 
+            {
+              'userId': int,
+              'user_method_id': int,
+              'isDefault': boolean,
+              'token': string
+            }
+
+>   - Response
+
+      - Success Return 200
+                    {
+                      'status': int,
+                      'payment_methods': object[
+                                        {
+                                          'id':int,
+                                          'name': string,
+                                          'icon': string
+                                        },
+                                      ]        
+                      'user_payment_methods': object[
+                                        {
+                                          'id':int,
+                                          'card_name':string,
+                                          'card_number': string,
+                                          'expiry_month': string,
+                                          'expiry_year': string,
+                                          'cvv-cvc': int,
+                                          'isDefault': boolean,
+                                          'icon': string
+                                        },
+                                      ]            
+                    }
+      
+      - Error Return 
+              {
+                  'status': int,
+                  'message': string
+                }                                  
